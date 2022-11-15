@@ -81,14 +81,11 @@ function App() {
     setTodos(newTodos);
   };
 
-  // 
+  // updateTodo
   const updateTodoItem = (index) => {
     const newTodoItems = [...todos];
-
     let item = newTodoItems[index];
-
     let newItem = prompt(`Update ke?`, item.text);
-
     newTodoItems.splice(index, 1, { text: newItem });
     setTodos(newTodoItems);
   };
