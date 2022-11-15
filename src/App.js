@@ -8,7 +8,7 @@ function Todo({ todo, index, completeTodo, removeTodo, updateTodo }) {
   return (
     <div className="todo" style={{ textDecoration: todo.isCompleted ? 'line-through' : '' }}>
       {todo.text}
-      <div>
+      <div className='btn-todo'>
         <button className="btn-complete" onClick={() => completeTodo(index)}>
           <BsCheck2 />
         </button>
@@ -81,6 +81,23 @@ function App() {
     setTodos(newTodos);
   };
 
+  // 
+  const updateTodoItem = (index) => {
+    const newTodoItems = [...todos];
+
+    let item = newTodoItems[index];
+
+    let newItem = prompt(`Update ke?`, item.text);
+
+    newTodoItems.splice(index, 1, { text: newItem });
+    setTodos(newTodoItems);
+  };
+
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    setTodos(storedTodos);
+  }, []);
+
   return (
     <div className="app">
       <div className="todo-list">
@@ -88,7 +105,7 @@ function App() {
           <h1>Todo List</h1>
           <TodoForm addTodo={addTodo} />
           {todos.map((todo, index) => (
-            <Todo key={index} index={index} todo={todo} completeTodo={completeTodo} removeTodo={removeTodo} />
+            <Todo key={index} index={index} todo={todo} completeTodo={completeTodo} removeTodo={removeTodo}  updateTodo={updateTodoItem} />
           ))}
         </div>
       </div>

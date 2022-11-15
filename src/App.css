@@ -51,6 +51,9 @@
 .form {
   margin-bottom: 3rem;
 }
+.btn-todo{
+  display: flex;
+}
 
 button {
   padding: 2px 5px;
