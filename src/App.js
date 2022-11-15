@@ -43,6 +43,7 @@ function TodoForm({ addTodo }) {
   );
 }
 
+// Get localstirage
 const getLocalStorage = () => {
   let todo = localStorage.getItem('todos');
   if (todo) {
@@ -55,20 +56,25 @@ const getLocalStorage = () => {
 function App() {
   const [todos, setTodos] = React.useState(getLocalStorage);
 
+  // set localstorage
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
+  // addTodo
   const addTodo = (text) => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
   };
 
+  // complateTodo
   const completeTodo = (index) => {
     const newTodos = [...todos];
     newTodos[index].isCompleted = true;
     setTodos(newTodos);
   };
+
+  // removeTodo
   const removeTodo = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
