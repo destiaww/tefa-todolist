@@ -43,7 +43,7 @@ function TodoForm({ addTodo }) {
   );
 }
 
-// Get localstirage
+// Get localstorage
 const getLocalStorage = () => {
   let todo = localStorage.getItem('todos');
   if (todo) {
